@@ -24,12 +24,12 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-blue-50 flex items-center justify-center p-4">
-			<div className="bg-white shadow-lg rounded-lg flex w-full h-full max-w-4xl">
+			<div className="bg-white shadow-lg rounded-lg flex flex-col sm:flex-row w-full h-full max-w-4xl">
 				<StepIndicator
 					currentStep={currentStep}
 					isSubmitted={isSubmitted}
 				/>
-				<div className="flex-1 p-6">
+				<div className="flex-1 p-6 mx-4 bg-white rounded-2xl -mt-20 sm:mt-0">
 					{isSubmitted ? (
 						<ThankYou />
 					) : (
