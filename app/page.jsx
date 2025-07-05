@@ -29,7 +29,7 @@ export default function Home() {
 					currentStep={currentStep}
 					isSubmitted={isSubmitted}
 				/>
-				<div className="flex-1 p-6 mx-4 bg-white rounded-2xl -mt-20 sm:mt-0">
+				<div className="flex-1 p-6 mx-4 bg-white rounded-2xl -mt-20 sm:mt-0 z-10">
 					{isSubmitted ? (
 						<ThankYou />
 					) : (

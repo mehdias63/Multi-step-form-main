@@ -8,7 +8,7 @@ export default function StepIndicator({ currentStep, isSubmitted }) {
 	const activeStep = isSubmitted ? 4 : currentStep
 
 	return (
-		<div className="flex text-white md:p-6">
+		<div className="relative text-white md:p-6">
 			<div className="w-full">
 				<picture>
 					<source
@@ -22,11 +22,11 @@ export default function StepIndicator({ currentStep, isSubmitted }) {
 					/>
 				</picture>
 			</div>
-			<div className="absolute space-y-6 gap-x-8 flex sm:flex-col">
+			<div className="absolute -top-10 left-0 w-full h-full flex items-center justify-center gap-x-4 sm:flex-col sm:justify-start sm:top-8 sm:items-start sm:left-8 sm:space-y-6 md:top-16 md:left-14">
 				{steps.map(step => (
 					<div key={step.number} className="flex items-center gap-4">
 						<span
-							className={`w-10 h-10 flex items-center justify-center rounded-full border font-bold transition-all duration-300 ${
+							className={`w-10 h-10 flex items-center justify-center rounded-full border font-bold leading-none transition-all duration-300 ${
 								currentStep === step.number
 									? 'bg-[#BEE2FD] text-blue-900 border-[#BEE2FD]'
 									: 'border-white text-white'
