@@ -56,6 +56,7 @@ export default function PersonalInfo({
 				title="Email Address"
 				textHolder="e.g. stephenking@lorem.com"
 				name="email"
+				value={formData.email}
 				onChange={handleChange}
 				error={errors.email}
 			/>
@@ -64,18 +65,12 @@ export default function PersonalInfo({
 				title="Phone Number"
 				textHolder="e.g. +1 234 567 890"
 				name="phone"
+				value={formData.phone}
 				onChange={handleChange}
 				error={errors.phone}
 			/>
-
-			<button
-				onClick={handleNext}
-				className="bg-blue-900 text-white px-4 py-2 rounded"
-			>
-				Next Step
-			</button>
-			<div className="flex justify-end mt-16">
-				<Button>Next Step</Button>
+			<div className="flex justify-end mt-32">
+				<Button onClick={handleNext}>Next Step</Button>
 			</div>
 		</div>
 	)

@@ -11,7 +11,7 @@ function TextField({
 	type = 'text',
 }) {
 	return (
-		<div className="mb-4">
+		<div className="mt-4 md:mt-8">
 			<Label htmlFor={name}>{title}</Label>
 			<Input
 				id={name}
