@@ -1,4 +1,7 @@
+import { Input } from '@/components/ui/input'
 import { useState } from 'react'
+import TextField from '../../components/ui/textField'
+import { Button } from '@/components/ui/button'
 
 export default function PersonalInfo({
 	nextStep,
@@ -33,66 +36,37 @@ export default function PersonalInfo({
 	}
 
 	return (
-		<div>
-			<h2 className="text-2xl font-bold mb-2">Personal info</h2>
-			<p className="text-gray-500 mb-6">
+		<div className="p-4">
+			<h2 className="text-2xl md:text-[2rem] font-bold mb-2 leading-[1.8rem] md:leading-[2.4rem] text-[#022959]">
+				Personal info
+			</h2>
+			<p className="text-base text-[#9699AA] mb-6 leading-[1.5rem]">
 				Please provide your name, email address, and phone number.
 			</p>
 
-			<div className="mb-4">
-				<label className="block text-sm font-medium">Name</label>
-				<input
-					type="text"
-					name="name"
-					value={formData.name}
-					onChange={handleChange}
-					className={`w-full border p-2 rounded ${
-						errors.name ? 'border-red-500' : 'border-gray-300'
-					}`}
-					placeholder="e.g. Stephen King"
-				/>
-				{errors.name && (
-					<p className="text-red-500 text-sm mt-1">{errors.name}</p>
-				)}
-			</div>
+			<TextField
+				title="Name"
+				textHolder="e.g. Stephen King"
+				name="name"
+				value={formData.name}
+				onChange={handleChange}
+				error={errors.name}
+			/>
+			<TextField
+				title="Email Address"
+				textHolder="e.g. stephenking@lorem.com"
+				name="email"
+				onChange={handleChange}
+				error={errors.email}
+			/>
 
-			<div className="mb-4">
-				<label className="block text-sm font-medium">
-					Email Address
-				</label>
-				<input
-					type="email"
-					name="email"
-					value={formData.email}
-					onChange={handleChange}
-					className={`w-full border p-2 rounded ${
-						errors.email ? 'border-red-500' : 'border-gray-300'
-					}`}
-					placeholder="e.g. stephenking@lorem.com"
-				/>
-				{errors.email && (
-					<p className="text-red-500 text-sm mt-1">{errors.email}</p>
-				)}
-			</div>
-
-			<div className="mb-4">
-				<label className="block text-sm font-medium">
-					Phone Number
-				</label>
-				<input
-					type="text"
-					name="phone"
-					value={formData.phone}
-					onChange={handleChange}
-					className={`w-full border p-2 rounded ${
-						errors.phone ? 'border-red-500' : 'border-gray-300'
-					}`}
-					placeholder="e.g. +1 234 567 890"
-				/>
-				{errors.phone && (
-					<p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-				)}
-			</div>
+			<TextField
+				title="Phone Number"
+				textHolder="e.g. +1 234 567 890"
+				name="phone"
+				onChange={handleChange}
+				error={errors.phone}
+			/>
 
 			<button
 				onClick={handleNext}
@@ -100,6 +74,9 @@ export default function PersonalInfo({
 			>
 				Next Step
 			</button>
+			<div className="flex justify-end mt-16">
+				<Button>Next Step</Button>
+			</div>
 		</div>
 	)
 }

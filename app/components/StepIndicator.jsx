@@ -35,8 +35,12 @@ export default function StepIndicator({ currentStep, isSubmitted }) {
 							{step.number}
 						</span>
 						<div className="uppercase text-xs hidden sm:block">
-							<p className="text-gray-400">Step {step.number}</p>
-							<p className="font-bold">{step.label}</p>
+							<p className="text-[#ABBCFF] text-xs leading-[0.9rem]">
+								Step {step.number}
+							</p>
+							<p className="font-bold text-sm leading-[1.05rem] tracking-[0.0625rem]">
+								{step.label}
+							</p>
 						</div>
 					</div>
 				))}
