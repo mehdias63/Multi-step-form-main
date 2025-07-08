@@ -37,10 +37,8 @@ export default function PersonalInfo({
 
 	return (
 		<div className="p-4">
-			<h2 className="text-2xl md:text-[2rem] font-bold mb-2 leading-[1.8rem] md:leading-[2.4rem] text-[#022959]">
-				Personal info
-			</h2>
-			<p className="text-base text-[#9699AA] mb-6 leading-[1.5rem]">
+			<h2 className="header">Personal info</h2>
+			<p className="text-desc">
 				Please provide your name, email address, and phone number.
 			</p>
 

@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button'
+
 export default function SelectPlan({
 	formData,
 	setFormData,
@@ -10,14 +12,22 @@ export default function SelectPlan({
 			name: 'Arcade',
 			priceMonthly: 9,
 			priceYearly: 90,
+			icon: '/images/icon-arcade.svg',
 		},
 		{
 			id: 'advanced',
 			name: 'Advanced',
 			priceMonthly: 12,
 			priceYearly: 120,
+			icon: '/images/icon-advanced.svg',
 		},
-		{ id: 'pro', name: 'Pro', priceMonthly: 15, priceYearly: 150 },
+		{
+			id: 'pro',
+			name: 'Pro',
+			priceMonthly: 15,
+			priceYearly: 150,
+			icon: '/images/icon-pro.svg',
+		},
 	]
 
 	const handleSelect = plan => {
@@ -34,26 +44,38 @@ export default function SelectPlan({
 
 	return (
 		<div>
-			<h2 className="text-xl font-bold mb-4">Select Plan</h2>
-
-			{plans.map(plan => (
-				<div
-					key={plan.id}
-					onClick={() => handleSelect(plan)}
-					className={`border p-2 mb-2 rounded cursor-pointer ${
-						formData.plan?.id === plan.id ? 'bg-blue-100' : ''
-					}`}
-				>
-					<p>{plan.name}</p>
-					<p>
-						$
-						{formData.billingType === 'yearly'
-							? plan.priceYearly + '/yr'
-							: plan.priceMonthly + '/mo'}
-					</p>
-				</div>
-			))}
-
+			<h2 className="header">Select your plan</h2>
+			<p className="text-desc">
+				You have the option of monthly or yearly billing.
+			</p>
+			<div className="flex flex-col lg:flex-row gap-x-4">
+				{plans.map(plan => (
+					<div
+						key={plan.id}
+						onClick={() => handleSelect(plan)}
+						className={`border p-4 mb-2 rounded cursor-pointer flex gap-x-4 lg:flex-col lg:justify-between lg:min-h-[10rem] lg:min-w-[8.625rem] ${
+							formData.plan?.id === plan.id
+								? 'bg-blue-50 border-[#483EFF]'
+								: ''
+						}`}
+					>
+						<div>
+							<img src={plan.icon} />
+						</div>
+						<div>
+							<p className="text-base font-medium text-[#022959] leading-[1.2rem]">
+								{plan.name}
+							</p>
+							<p className="text-sm text-[#9699AA] leading-[1.05rem]">
+								$
+								{formData.billingType === 'yearly'
+									? plan.priceYearly + '/yr'
+									: plan.priceMonthly + '/mo'}
+							</p>
+						</div>
+					</div>
+				))}
+			</div>
 			<button
 				onClick={toggleBilling}
 				className="bg-gray-300 px-4 py-1 rounded mb-4"
@@ -62,19 +84,11 @@ export default function SelectPlan({
 				{formData.billingType === 'monthly' ? 'Yearly' : 'Monthly'}
 			</button>
 
-			<div className="flex justify-between">
-				<button
-					onClick={prevStep}
-					className="bg-gray-300 px-4 py-2 rounded"
-				>
-					Back
-				</button>
-				<button
-					onClick={nextStep}
-					className="bg-blue-500 text-white px-4 py-2 rounded"
-				>
-					Next Step
-				</button>
+			<div className="flex justify-between mt-32">
+				<Button variant="secondary" onClick={prevStep}>
+					Go Back
+				</Button>
+				<Button onClick={nextStep}>Next Step</Button>
 			</div>
 		</div>
 	)

@@ -147,3 +147,10 @@
 body {
 	font-family: var(--font-ubuntu);
 }
+.header {
+	@apply text-2xl md:text-[2rem] font-bold mb-2 leading-[1.8rem] md:leading-[2.4rem] text-[#022959];
+}
+
+.text-desc {
+	@apply text-base text-[#9699AA] mb-6 leading-[1.5rem];
+}

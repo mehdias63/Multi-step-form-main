@@ -12,7 +12,14 @@ function TextField({
 }) {
 	return (
 		<div className="mt-4 md:mt-8">
-			<Label htmlFor={name}>{title}</Label>
+			<div className="flex justify-between items-center">
+				<Label htmlFor={name}>{title}</Label>
+				{error && (
+					<p className="text-sm font-bold text-[#EE374A] mb-1">
+						{error}
+					</p>
+				)}
+			</div>
 			<Input
 				id={name}
 				name={name}
@@ -20,9 +27,8 @@ function TextField({
 				value={value}
 				onChange={onChange}
 				placeholder={textHolder}
-				className={error ? 'border-red-500' : ''}
+				className={error ? 'border-[#EE374A]' : ''}
 			/>
-			{error && <p className="text-sm text-red-500 mt-1">{error}</p>}
 		</div>
 	)
 }
