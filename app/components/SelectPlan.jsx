@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Switch } from '@/components/ui/switch'
 
 export default function SelectPlan({
 	formData,
@@ -76,14 +77,29 @@ export default function SelectPlan({
 					</div>
 				))}
 			</div>
-			<button
-				onClick={toggleBilling}
-				className="bg-gray-300 px-4 py-1 rounded mb-4"
-			>
-				Switch to{' '}
-				{formData.billingType === 'monthly' ? 'Yearly' : 'Monthly'}
-			</button>
-
+			<div className="bg-[#F8F9FF] h-12 flex items-center justify-center gap-x-4 mt-8">
+				<p
+					className={`text-sm font-medium ${
+						formData.billingType === 'monthly'
+							? 'text-[#022959]'
+							: 'text-[#9699AA]'
+					}`}
+				>
+					Monthly
+				</p>
+				<Switch onClick={toggleBilling}>
+					{formData.billingType === 'yearly' ? 'Monthly' : 'Yearly'}
+				</Switch>
+				<p
+					className={`text-sm font-medium ${
+						formData.billingType === 'yearly'
+							? 'text-[#022959]'
+							: 'text-[#9699AA]'
+					}`}
+				>
+					Yearly
+				</p>
+			</div>
 			<div className="flex justify-between mt-32">
 				<Button variant="secondary" onClick={prevStep}>
 					Go Back
