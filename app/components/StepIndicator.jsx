@@ -1,3 +1,5 @@
+'use client'
+
 export default function StepIndicator({ currentStep, isSubmitted }) {
 	const steps = [
 		{ number: 1, label: 'Your Info' },
@@ -5,7 +7,6 @@ export default function StepIndicator({ currentStep, isSubmitted }) {
 		{ number: 3, label: 'Add-ons' },
 		{ number: 4, label: 'Summary' },
 	]
-	const activeStep = isSubmitted ? 4 : currentStep
 
 	return (
 		<div className="relative text-white md:p-6">
@@ -22,12 +23,14 @@ export default function StepIndicator({ currentStep, isSubmitted }) {
 					/>
 				</picture>
 			</div>
+
 			<div className="absolute -top-10 left-0 w-full h-full flex items-center justify-center gap-x-4 sm:flex-col sm:justify-start sm:top-8 sm:items-start sm:left-8 sm:space-y-6 md:top-16 md:left-14">
 				{steps.map(step => (
 					<div key={step.number} className="flex items-center gap-4">
 						<span
 							className={`w-10 h-10 flex items-center justify-center rounded-full border font-bold leading-none transition-all duration-300 ${
-								currentStep === step.number
+								parseInt(step.number) === currentStep ||
+								(isSubmitted && step.number === '4')
 									? 'bg-[#BEE2FD] text-blue-900 border-[#BEE2FD]'
 									: 'border-white text-white'
 							}`}

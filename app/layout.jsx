@@ -1,5 +1,7 @@
+'use client'
 import ubuntuFont from '@/constants/localFonts'
 import './globals.css'
+import Providers from './providers'
 
 export default function RootLayout({ children }) {
 	return (
@@ -8,7 +10,7 @@ export default function RootLayout({ children }) {
 				suppressHydrationWarning={true}
 				className={`${ubuntuFont.variable} font-sans`}
 			>
-				{children}
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)

@@ -1,37 +1,38 @@
-import { Input } from '@/components/ui/input'
-import { useState } from 'react'
-import TextField from '../../components/ui/textField'
-import { Button } from '@/components/ui/button'
+'use client'
 
-export default function PersonalInfo({
-	nextStep,
-	formData,
-	setFormData,
-}) {
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPersonalInfo, nextStep } from '../store/formSlice'
+import { Button } from '@/components/ui/button'
+import TextField from '@/components/ui/textField'
+
+export default function PersonalInfo() {
+	const dispatch = useDispatch()
+	const { name, email, phone } = useSelector(
+		state => state.form.personalInfo,
+	)
+	const [form, setForm] = useState({ name, email, phone })
 	const [errors, setErrors] = useState({})
 
 	const handleChange = e => {
-		setFormData({ ...formData, [e.target.name]: e.target.value })
-		setErrors({ ...errors, [e.target.name]: '' }) // پاک کردن ارور هنگام تایپ
+		setForm({ ...form, [e.target.name]: e.target.value })
+		setErrors({ ...errors, [e.target.name]: '' })
 	}
 
 	const validate = () => {
 		const newErrors = {}
-		if (!formData.name.trim())
-			newErrors.name = 'This field is required'
-		if (!formData.email.trim())
-			newErrors.email = 'This field is required'
-		if (!formData.phone.trim())
-			newErrors.phone = 'This field is required'
+		if (!form.name.trim()) newErrors.name = 'This field is required'
+		if (!form.email.trim()) newErrors.email = 'This field is required'
+		if (!form.phone.trim()) newErrors.phone = 'This field is required'
 
 		setErrors(newErrors)
-
 		return Object.keys(newErrors).length === 0
 	}
 
 	const handleNext = () => {
 		if (validate()) {
-			nextStep()
+			dispatch(setPersonalInfo(form))
+			dispatch(nextStep())
 		}
 	}
 
@@ -46,7 +47,7 @@ export default function PersonalInfo({
 				title="Name"
 				textHolder="e.g. Stephen King"
 				name="name"
-				value={formData.name}
+				value={form.name}
 				onChange={handleChange}
 				error={errors.name}
 			/>
@@ -54,19 +55,19 @@ export default function PersonalInfo({
 				title="Email Address"
 				textHolder="e.g. stephenking@lorem.com"
 				name="email"
-				value={formData.email}
+				value={form.email}
 				onChange={handleChange}
 				error={errors.email}
 			/>
-
 			<TextField
 				title="Phone Number"
 				textHolder="e.g. +1 234 567 890"
 				name="phone"
-				value={formData.phone}
+				value={form.phone}
 				onChange={handleChange}
 				error={errors.phone}
 			/>
+
 			<div className="flex justify-end mt-32">
 				<Button onClick={handleNext}>Next Step</Button>
 			</div>

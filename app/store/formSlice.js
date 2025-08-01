@@ -13,6 +13,7 @@ const initialState = {
 		price: 0,
 		yearly: false,
 	},
+	billingType: 'monthly',
 	addons: [],
 }
 
@@ -38,6 +39,13 @@ const formSlice = createSlice({
 		setPlan: (state, action) => {
 			state.plan = action.payload
 		},
+		setSelectedPlan: (state, action) => {
+			state.plan = action.payload
+		},
+		setBillingType: (state, action) => {
+			state.billingType = action.payload
+		},
+
 		setAddons: (state, action) => {
 			state.addons = action.payload
 		},
@@ -51,6 +59,8 @@ export const {
 	setStep,
 	setSubmitted,
 	setPersonalInfo,
+	setSelectedPlan,
+	setBillingType,
 	setPlan,
 	setAddons,
 	resetForm,
