@@ -21,7 +21,7 @@ export default function Summary({ onConfirm }) {
 	return (
 		<div>
 			<h2 className="text-xl font-bold mb-4">Summary</h2>
-			<div className="space-y-2">
+			<div className="space-y-2 mb-4">
 				<div className="flex justify-between">
 					<span>
 						{plan.name} ({plan.yearly ? 'Yearly' : 'Monthly'})
