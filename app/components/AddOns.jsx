@@ -36,10 +36,8 @@ export default function AddOns() {
 
 	return (
 		<div>
-			<h2 className="text-2xl md:text-[2rem] font-bold mb-2 text-[#022959] leading-[1.8rem] md:leading-[2.4rem]">
-				Pick Add-ons
-			</h2>
-			<p className="text-[#9699AA] text-base leading-[1.5rem] mb-6 md:mb-8">
+			<h2 className="header">Pick Add-ons</h2>
+			<p className="text-desc">
 				Add-ons help enhance your gaming experience.
 			</p>
 			<div className="space-y-4">
